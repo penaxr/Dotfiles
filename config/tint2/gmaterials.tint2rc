@@ -1,29 +1,25 @@
 #---------------------------------------------
 # TINT2 CONFIG FILE
 #---------------------------------------------
-# Tint2 theme by penaxr
-# https://github.com/penaxr
-# based on google material
+
 #---------------------------------------------
 # BACKGROUND AND BORDER
 #---------------------------------------------
 
 rounded = 0
 border_width = 1
-background_color = #1d1f21 0
+background_color = #1d1f21 100
 border_color = #969896 40
 
 rounded = 0
 border_width = 1
-background_color = #1d1f21 50
-#background_color = #719B69 50
+background_color = #1d1f21 100
 border_color = #969896 40
 
 
 rounded = 0
 border_width = 1
-#background_color = #A6B384 20
-background_color = #1d1f21 20
+background_color = #1d1f21 100
 border_color = #969896
 
 
@@ -31,6 +27,7 @@ border_color = #969896
 # PANEL
 #---------------------------------------------
 panel_monitor = all
+#panel_items = LTSBC
 #panel_mode = single_monitor
 panel_position = bottom center
 panel_size = 100% 30
@@ -104,6 +101,6 @@ systray_padding = 8 0 10
 systray_background_id = 0
 systray_sort = ascending
 systray_icon_size = 16
-systray_icon_asb = 70 0 0
+systray_icon_asb = 120 3 63
 systray_monitor = 1
 systray_name_filter =
