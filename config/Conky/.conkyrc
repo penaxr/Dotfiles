@@ -1,0 +1,86 @@
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Mono:size=8
+xftalpha 1
+update_interval 0.5
+total_run_times 0
+own_window yes
+own_window_transparent no
+own_window_colour 161616
+own_window_opacity 90
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 155
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+maximum_width 270
+draw_shades yes
+draw_outline yes
+draw_borders no
+draw_graph_borders yes
+default_color aaaaaa
+default_shade_color 000000
+default_outline_color 000000
+alignment middle_right
+gap_x 16
+gap_y 12
+no_buffers yes
+uppercase no
+cpu_avg_samples 4
+override_utf8_locale no
+
+##############################################
+#  Output
+##############################################
+
+TEXT
+${color 00b4ff}Mon Systeme $color${hr 2}
+
+${alignc}$kernel
+
+Uptime: $alignc $uptime_short
+Upgrades: $alignc ${execpi 3600 checkupdates | awk 'END { print (NR == 0 ? "System up to date" : NR " package" (NR > 1 ? "s" : "")); }'}
+
+${color 00b4ff}CPU $color${hr 2}
+
+CPU freq ${freq}Mhz $alignc CPU Load ${cpu cpu0}% $alignc CPU Temp: ${acpitemp}C
+
+#Intel Core i5-2520M $alignr ${exec cat /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input | cut -c-2}${iconv_start UTF-8 ISO_8859-1}°${iconv_stop}C
+$alignc ${cpugraph cpu1 20,50 333333 ff083c} ${cpugraph cpu2 20,50 333333 ff083c}  ${cpugraph cpu3 20,51 333333 ff083c} ${cpugraph cpu4 20,50 333333 ff083c}
+
+${color 00b4ff}Memoire $color${hr 2}
+
+$mem / $memmax ($memperc%)
+$membar
+$alignr $memeasyfree Free
+
+${color 00b4ff}Disques $color${hr 2}
+
+Root
+${fs_used /} / ${fs_size /} (${fs_used_perc /}%)
+${fs_bar /}
+$alignr ${fs_free /} Free
+Home
+${fs_used /home/yannroxee/} / ${fs_size /home/yannroxee/} (${fs_used_perc /home/yannroxee/}%)
+${fs_bar /home/yannroxee/}
+$alignr ${fs_free /home/yannroxee/} Free
+
+${color 00b4ff}Processus Actif $color${hr 2}
+
+${color ffffff}   PID:Name${alignr}${alignr}MEM%$color
+1.${top_mem pid 1}:${top_mem name 1}${alignr}${top mem 1}%
+2.${top_mem pid 2}:${top_mem name 2}${alignr}${top mem 2}%
+3.${top_mem pid 3}:${top_mem name 3}${alignr}${top mem 3}%
+#${top_mem name 4}${alignc}${top_mem pid 4}${alignr}${top mem 4}%
+#${top_mem name 5}${alignc}${top_mem pid 5}${alignr}${top mem 5}%
+
+${color 00b4ff}Reseau $color${hr 2}
+
+${alignc} ${wireless_essid wlp2s0}  ${addr wlp2s0}
+
+${goto 45} Upstream ${goto 165} Downstream
+${goto 25} ${upspeedgraph wlp2s0 32,90 333333 ff083c} ${goto 150} ${downspeedgraph wlp2s0 32,90 333333 ff083c}
+${goto 45}${upspeed wlp2s0}  ${goto 165}${downspeed wlp2s0}
